@@ -1,0 +1,14 @@
+Initial values
+0 - 5
+5
+10
+Breadth first search results:
+10 is at 0 in tree with root[0].
+9 is at -1 in tree with root[0].
+10 is at -1 in tree with root[1].
+Depth first search results:
+10 is at 0 in tree with root[0].
+9 is at -1 in tree with root[0].
+10 is at -1 in tree with root[1].
+Find the height of the tree results:
+The min of the tree is 10

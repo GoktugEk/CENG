@@ -1,0 +1,36 @@
+Name: Patates Kızartması, count: 98
+Name: Pilav, count: 9
+Name: Salata, count: 99
+Name: Köfte, count: 9
+Name: phil1, favorite meal: Patates Kızartması, age: 1424
+Name: phil2, favorite meal: Pilav, age: 1145
+Name: phil3, favorite meal: Köfte, age: 1976
+Name: phil4, favorite meal: Patates Kızartması, age: 1555
+Name: phil5, favorite meal: Pilav, age: 10
+Name: phil6, favorite meal: Pilav, age: 8
+Name: phil7, favorite meal: Salata, age: 9998
+Name: phil8, favorite meal: Pilav, age: 456
+Name: phil9, favorite meal: Pilav, age: 450
+Name: phil10, favorite meal: Pilav, age: 8753
+Name: phil11, favorite meal: Salata, age: 5333
+phil7 -> phil6 -> phil5
+phil6 -> phil5 -> phil9
+phil5 -> phil9 -> phil8
+phil9 -> phil8 -> phil2
+phil8 -> phil2 -> phil1
+phil2 -> phil1 -> phil4
+phil1 -> phil4 -> phil3
+phil4 -> phil3 -> phil11
+phil3 -> phil11 -> phil10
+phil11 -> phil10 -> phil7
+phil10 -> phil7 -> phil6
+Name: Patates Kızartması, count: 96
+Name: Pilav, count: 3
+Name: Salata, count: 97
+Name: Köfte, count: 8
+phil10 -> phil8 -> phil2
+phil8 -> phil2 -> phil1
+phil2 -> phil1 -> phil3
+phil1 -> phil3 -> phil11
+phil3 -> phil11 -> phil10
+phil11 -> phil10 -> phil8

@@ -1,0 +1,12 @@
+Name: Patates Kızartması, count: 1
+Name: Pilav, count: 1
+Name: Salata, count: 1
+Name: phil1, favorite meal: Patates Kızartması, age: 9998
+Name: phil2, favorite meal: Pilav, age: 2
+Name: phil3, favorite meal: Salata, age: 3125
+phil1 -> phil2 -> phil3
+phil2 -> phil3 -> phil1
+phil3 -> phil1 -> phil2
+Name: Patates Kızartması, count: 0
+Name: Pilav, count: 0
+Name: Salata, count: 0

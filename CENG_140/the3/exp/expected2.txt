@@ -1,0 +1,94 @@
+Name: Banana Leaf Rice, count: 3
+Name: Corn Bread, count: 1
+Name: Borscht, count: 2
+Name: Sunday Roast, count: 1
+Name: Poutine, count: 2
+Name: Kumpir, count: 1
+Name: Kung Pao, count: 3
+Name: Tofu, count: 1
+Name: Wonton, count: 1
+Name: Fried Rice, count: 2
+----------------------------
+
+Name: Lao Tzu, favorite meal: Wonton, age: 1424
+Name: Confucius, favorite meal: Banana Leaf Rice, age: 1145
+Name: Mozi, favorite meal: Fried Rice, age: 1976
+Name: Shang Yang, favorite meal: Banana Leaf Rice, age: 1555
+Name: Darwin, favorite meal: Sunday Roast, age: 211
+Name: De Moragan, favorite meal: Poutine, age: 214
+Name: Descates, favorite meal: Borscht, age: 424
+Name: Erasmus, favorite meal: Borscht, age: 554
+Name: Faraday, favorite meal: Poutine, age: 229
+Name: Gaius, favorite meal: Corn Bread, age: 1910
+Name: Gorgias, favorite meal: Kumpir, age: 2503
+Name: Hess, favorite meal: Fried Rice, age: 208
+Name: Huxley, favorite meal: Tofu, age: 195
+Name: Damascius, favorite meal: Banana Leaf Rice, age: 1558
+----------------------------
+
+Gorgias -> Huxley -> Hess
+Huxley -> Hess -> Darwin
+Hess -> Darwin -> De Moragan
+Darwin -> De Moragan -> Faraday
+De Moragan -> Faraday -> Descates
+Faraday -> Descates -> Erasmus
+Descates -> Erasmus -> Confucius
+Erasmus -> Confucius -> Lao Tzu
+Confucius -> Lao Tzu -> Shang Yang
+Lao Tzu -> Shang Yang -> Damascius
+Shang Yang -> Damascius -> Gaius
+Damascius -> Gaius -> Mozi
+Gaius -> Mozi -> Gorgias
+Mozi -> Gorgias -> Huxley
+----------------------------
+
+Name: Banana Leaf Rice, count: 0
+Name: Corn Bread, count: 0
+Name: Borscht, count: 0
+Name: Sunday Roast, count: 0
+Name: Poutine, count: 0
+Name: Kumpir, count: 0
+Name: Kung Pao, count: 3
+Name: Tofu, count: 0
+Name: Wonton, count: 0
+Name: Fried Rice, count: 0
+----------------------------
+
+Gorgias -> Hess -> Darwin
+Hess -> Darwin -> De Moragan
+Darwin -> De Moragan -> Faraday
+De Moragan -> Faraday -> Descates
+Faraday -> Descates -> Erasmus
+Descates -> Erasmus -> Confucius
+Erasmus -> Confucius -> Lao Tzu
+Confucius -> Lao Tzu -> Shang Yang
+Lao Tzu -> Shang Yang -> Damascius
+Shang Yang -> Damascius -> Gaius
+Damascius -> Gaius -> Mozi
+Gaius -> Mozi -> Gorgias
+Mozi -> Gorgias -> Hess
+----------------------------
+Gorgias -> Hess -> Darwin
+Hess -> Darwin -> De Moragan
+Darwin -> De Moragan -> Faraday
+De Moragan -> Faraday -> Descates
+Faraday -> Descates -> Confucius
+Descates -> Confucius -> Lao Tzu
+Confucius -> Lao Tzu -> Shang Yang
+Lao Tzu -> Shang Yang -> Damascius
+Shang Yang -> Damascius -> Gaius
+Damascius -> Gaius -> Mozi
+Gaius -> Mozi -> Gorgias
+Mozi -> Gorgias -> Hess
+----------------------------
+Mozi -> Hess -> Darwin
+Hess -> Darwin -> De Moragan
+Darwin -> De Moragan -> Faraday
+De Moragan -> Faraday -> Descates
+Faraday -> Descates -> Confucius
+Descates -> Confucius -> Lao Tzu
+Confucius -> Lao Tzu -> Shang Yang
+Lao Tzu -> Shang Yang -> Damascius
+Shang Yang -> Damascius -> Gaius
+Damascius -> Gaius -> Mozi
+Gaius -> Mozi -> Hess

@@ -1,0 +1,19 @@
+Initial values
+35
+Breadth first search results:
+3 is at -1 in tree with root[0].
+9 is at -1 in tree with root[0].
+3 is at -1 in tree with root[1].
+2 is at -1 in tree with root[0].
+4 is at -1 in tree with root[0].
+5 is at -1 in tree with root[0].
+Depth first search results:
+3 is at -1 in tree with root[0].
+9 is at -1 in tree with root[0].
+3 is at -1 in tree with root[1].
+2 is at -1 in tree with root[0].
+4 is at -1 in tree with root[0].
+5 is at -1 in tree with root[0].
+Find the height of the tree results:
+The height of the tree is 0
+The height of the tree is 0

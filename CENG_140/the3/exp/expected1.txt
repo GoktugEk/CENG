@@ -1,0 +1,69 @@
+Name: Banana Leaf Rice, count: 58
+Name: Corn Bread, count: 44
+Name: Borscht, count: 44
+Name: Sunday Roast, count: 44
+Name: Poutine, count: 44
+Name: Kumpir, count: 44
+Name: Kung Pao, count: 44
+Name: Tofu, count: 44
+Name: Wonton, count: 44
+Name: Fried Rice, count: 44
+----------------------------
+
+Name: Lao Tzu, favorite meal: Banana Leaf Rice, age: 1424
+Name: Confucius, favorite meal: Banana Leaf Rice, age: 1145
+Name: Mozi, favorite meal: Banana Leaf Rice, age: 1976
+Name: Shang Yang, favorite meal: Banana Leaf Rice, age: 1555
+Name: Darwin, favorite meal: Banana Leaf Rice, age: 211
+Name: De Moragan, favorite meal: Banana Leaf Rice, age: 214
+Name: Descates, favorite meal: Banana Leaf Rice, age: 424
+Name: Erasmus, favorite meal: Banana Leaf Rice, age: 554
+Name: Faraday, favorite meal: Banana Leaf Rice, age: 229
+Name: Gaius, favorite meal: Banana Leaf Rice, age: 1910
+Name: Gorgias, favorite meal: Banana Leaf Rice, age: 2503
+Name: Hess, favorite meal: Banana Leaf Rice, age: 208
+Name: Huxley, favorite meal: Banana Leaf Rice, age: 195
+Name: Damascius, favorite meal: Banana Leaf Rice, age: 1558
+----------------------------
+
+Gorgias -> Huxley -> Hess
+Huxley -> Hess -> Darwin
+Hess -> Darwin -> De Moragan
+Darwin -> De Moragan -> Faraday
+De Moragan -> Faraday -> Descates
+Faraday -> Descates -> Erasmus
+Descates -> Erasmus -> Confucius
+Erasmus -> Confucius -> Lao Tzu
+Confucius -> Lao Tzu -> Shang Yang
+Lao Tzu -> Shang Yang -> Damascius
+Shang Yang -> Damascius -> Gaius
+Damascius -> Gaius -> Mozi
+Gaius -> Mozi -> Gorgias
+Mozi -> Gorgias -> Huxley
+----------------------------
+
+Name: Banana Leaf Rice, count: 44
+Name: Corn Bread, count: 44
+Name: Borscht, count: 44
+Name: Sunday Roast, count: 44
+Name: Poutine, count: 44
+Name: Kumpir, count: 44
+Name: Kung Pao, count: 44
+Name: Tofu, count: 44
+Name: Wonton, count: 44
+Name: Fried Rice, count: 44
+----------------------------
+
+Mozi -> Huxley -> Hess
+Huxley -> Hess -> Darwin
+Hess -> Darwin -> De Moragan
+Darwin -> De Moragan -> Faraday
+De Moragan -> Faraday -> Descates
+Faraday -> Descates -> Erasmus
+Descates -> Erasmus -> Confucius
+Erasmus -> Confucius -> Lao Tzu
+Confucius -> Lao Tzu -> Shang Yang
+Lao Tzu -> Shang Yang -> Damascius
+Shang Yang -> Damascius -> Gaius
+Damascius -> Gaius -> Mozi
+Gaius -> Mozi -> Huxley
