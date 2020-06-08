@@ -1,0 +1,32 @@
+Name: Banana Leaf Rice, count: 9
+Name: Corn Bread, count: 0
+Name: Borscht, count: 7
+Name: Sunday Roast, count: 1
+Name: Poutine, count: 2
+Name: Kumpir, count: 5
+Name: Kung Pao, count: 3
+Name: Tofu, count: 1
+Name: Wonton, count: 2
+Name: Fried Rice, count: 3
+----------------------------
+
+Name: Hess, favorite meal: Fried Rice, age: 208
+Name: Huxley, favorite meal: Tofu, age: 195
+Name: Damascius, favorite meal: Banana Leaf Rice, age: 1558
+----------------------------
+
+Damascius -> Huxley -> Hess
+Huxley -> Hess -> Damascius
+Hess -> Damascius -> Huxley
+----------------------------
+
+Name: Banana Leaf Rice, count: 8
+Name: Corn Bread, count: 0
+Name: Borscht, count: 7
+Name: Sunday Roast, count: 1
+Name: Poutine, count: 2
+Name: Kumpir, count: 5
+Name: Kung Pao, count: 3
+Name: Tofu, count: 0
+Name: Wonton, count: 2
+Name: Fried Rice, count: 2
