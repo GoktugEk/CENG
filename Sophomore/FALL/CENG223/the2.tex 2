@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+% symbol commands for the curious
+\newcommand{\setZp}{\mathbb{Z}^+}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\calT}{\mathcal{T}}
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name : Göktuğ Ekinci \\
+Id Number : 2380343 \\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+\paragraph{a.}
+\paragraph{i)}
+According to the first property, empty set and A's itself can be in $\tau$. Also, expression has no contradictions with second and third properties. It \textbf{is a topology.}
+\paragraph{ii)}
+The union of the sets \{a\} and \{b\} is \{a,b\} which does not exist in $\tau$. This expression \textbf{is not a topology.}
+\paragraph{iii)}
+According to the first property, empty set and A's itself can be in $\tau$, so it does not contradict with first property. Also, all of the unions and intersections of the subsets of $\tau$ is in the $\tau$. This expression \textbf{is a topology.}
+\paragraph{iv)}
+The union of the subsets \{a,c\} and \{b\} of $\tau$ is \{a,b,c\} which is not in the $\tau$. This expression \textbf{is not a topology} according to the second property.
+\paragraph{b.}
+
+\section*{Answer 2}
+\paragraph{a.}
+$
+f(a_1,b_1) = f(a_2,b_2) \\
+a_1 + b_1 = a_2 + b_2\\
+$
+Since a's come from natural numbers and b's cannot be any integer value, these should be compared separately.\\
+$
+a_1 - a_2 = 0 \ and\  b_1 - b_2 = 0 \\
+$
+And this condition can be provided if and only if $a_1 = a_2\  and\  b_1 = b_2$ and this implies this \textbf{function is injective.}
+\paragraph{b.}
+This function is not surjective since it does not give any integers even integers are included in image set. For example, \\
+if we accept any real number a + b as a, integer part, and b, real part between 0 and 1. If we try to produce an integer,  real part would not let us to produce any integer because it cannot take 0 or 1.
+\paragraph{c.}
+According to Schroeder–Bernstein theorem if there are two functions whose image and domain sets are A $\rightarrow$ B and B $\rightarrow$ A respectively. If these two functions are injective, their cardinality must be same. I proved that f is injective for its domain and image set. g is given injective for the same sets in reverse, thus \textbf{They have the same cardinality.}
+\section*{Answer 3}
+\paragraph{a.}
+Mapping of \{0\} to $Z^+$ is infinitely countable since we do not change the number of elements in the set of $Z^+$. Mapping of \{0,1\} to $Z^+$ can be defined as $Z^+ \times Z^+$, and Cartesian product of two infinitely countable sets is also infinitely countable. \textbf{This set A is countable infinity.} 
+\paragraph{b.}
+As I explained that $Z^+ \times Z^+$ is infinitely countable. If we say $Z^+ \times Z^+$ is $(Z^+)^2$, we can say this expression equals to $(Z^+)^n$. Getting the product of two countable set is countable, so getting the product of countable sets (n-1) times does not change anything and it is also countable. \textbf{This set B is countable infinity.}
+\paragraph{c.}
+The set C includes the set of D, $D\subseteq C$. Cantor's second diagonal argument implies if a set is countable, all of its subsets must be countable too. There is a contradiction. \textbf{C is uncountable}
+\paragraph{d.}
+D is mapping to all values in \{0,1\}. In other words, it is the set of binary sequences, and according to Cantor's second diagonal argument, \textbf{D is uncountable.}
+
+\paragraph{e.}
+
+\section*{Answer 4}
+\paragraph{a.}
+By Stirling's Approximation $n! \approx \sqrt{2\pi n} * \frac{n^n}{e^n}$ \\
+By theta's definition to arrive $n! = \theta(n^n)$, we must provide $c_1n^n< n!<c_2n^n $ where $c_1,c_2 \in R^+$ \\
+Changing $n^n$ with $\sqrt{2\pi n} * \frac{n^n}{e^n}$ \\
+Here there is a contradiction since $c_1n^n <\sqrt{2\pi n} * \frac{n^n}{e^n} $ false for sufficiently big n.\\
+So $\mathbf{n! \neq \theta(n^n)} $
+
+\paragraph{b.}
+$(n + a)^b = n^b + c_1 * n^(b-1)*a^1 + c_1 * n^(b-2)*a^2 .... + a^b$ 
+\section*{Answer 5}
+\paragraph{a.}
+\paragraph{b.}
+
+
+\end{document}

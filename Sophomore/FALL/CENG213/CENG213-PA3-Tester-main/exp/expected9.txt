@@ -1,0 +1,22 @@
+adjNodes of : Algeria
+Argentina
+Singapore
+United Kingdom
+adjNodes of : Turkey
+United States
+Sweden
+Northern Cyprus
+adjNodes of : Israel
+Turkey
+Germany
+adjNodes of : Barbados
+Bangladesh
+El Salvador
+Fiji
+Germany
+Total Import of: Algeria 23666
+Total Import of: Argentina 241247
+Total Import of: Israel 1298989
+Total Import of: Turkey 123233
+Total Import of: Barbados 134933
+Total Import of: Northern Cyprus 249196

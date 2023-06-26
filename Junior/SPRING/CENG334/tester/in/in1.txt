@@ -1,0 +1,13 @@
+pbc b1
+ls -al
+pbs
+pbc b3
+grep main
+grep parser
+pbs
+pbc b2
+cat
+cat
+pbs
+b1 | b2 | b3
+quit

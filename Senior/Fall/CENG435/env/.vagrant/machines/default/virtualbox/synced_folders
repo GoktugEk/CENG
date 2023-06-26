@@ -1,0 +1,1 @@
+{"rsync":{"/home/vagrant/code":{"type":"rsync","guestpath":"/home/vagrant/code","hostpath":"/Users/goktugekinci/Desktop/Senior/Fall/CENG435/env/code","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}},"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/goktugekinci/Desktop/Senior/Fall/CENG435/env","disabled":false,"__vagrantfile":true}}}

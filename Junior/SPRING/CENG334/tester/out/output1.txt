@@ -1,0 +1,4 @@
+drwxr-xr-x@ 2 goktugekinci  staff      64 Apr 18 21:48 exp
+drwxr-xr-x@ 2 goktugekinci  staff      64 Apr 18 21:48 exp
+-rw-r--r--  1 goktugekinci  staff     330 Apr 18 22:25 tester.py
+-rw-r--r--  1 goktugekinci  staff     330 Apr 18 22:25 tester.py

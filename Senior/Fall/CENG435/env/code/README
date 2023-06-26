@@ -1,0 +1,9 @@
+Hocam merhabalar, 
+
+Odevi g++ ta compile ediyorum. Makefile im hazir. make komutuyla iki executable i da elde edebilirsiniz.
+
+Odevimde iki port kullandigim icin containerda nets0 da client nets1 de de serverin calismasi gerekiyor. Ip leri uyusmayabiliyor calistirdigim containeri switchleyince duzeliyor.
+
+Kodumda iki cpp dosyamda nerdeyse tamamen ayni, tek fark ip ler ve port numaralari crossed bir sekilde. Iki dosyada da bir client bir de server var ikisinin de mseaj atabilmesi icin. Clientin clienti, serverin serverini hedef aliyor serverin clienti, clientin serverini hedef aliyor.
+
+Kodumda port numaralarini ve ip leri statik bir sekilde yazdigim icin executable larim herhangi bir input almiyor. ./server ve ./client seklinde direkt calistirilabilir.

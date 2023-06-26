@@ -1,0 +1,35 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define ":attacker" do |attacker|
+    attacker.vm.box = "ubuntu/focal64"
+    attacker.vm.hostname = "attacker"
+    attacker.vm.network "private_network", ip: "192.168.56.10"
+    attacker.vm.synced_folder "./code", "/home/vagrant/code"
+    attacker.vm.provision "shell", inline: <<-SHELL
+        echo "ubuntu:ubuntu" | sudo chpasswd
+        SHELL
+  end
+
+  config.vm.define ":victim" do |victim|
+    victim.vm.box = "ubuntu/focal64"
+    victim.vm.hostname = "victim"
+    victim.vm.network "private_network", ip: "192.168.56.20"
+    victim.vm.synced_folder "./code", "/home/vagrant/code"
+    victim.vm.provision "shell", inline: <<-SHELL
+        echo "ubuntu:ubuntu" | sudo chpasswd
+        SHELL
+  end    
+
+  config.vm.define ":client" do |client|
+    client.vm.box = "ubuntu/focal64"
+    client.vm.hostname = "client"
+    client.vm.network "private_network", ip: "192.168.56.30"
+    client.vm.synced_folder "./code", "/home/vagrant/code" 
+    client.vm.provision "shell", inline: <<-SHELL
+        echo "ubuntu:ubuntu" | sudo chpasswd
+        SHELL
+  end
+
+end
