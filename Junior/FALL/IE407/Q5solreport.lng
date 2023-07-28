@@ -1,0 +1,34 @@
+  Global optimal solution found.
+  Objective value:                              77.00000
+  Objective bound:                              77.00000
+  Infeasibilities:                              0.000000
+  Extended solver steps:                               0
+  Total solver iterations:                             0
+  Elapsed runtime seconds:                          0.14
+
+  Model Class:                                      PILP
+
+  Total variables:                      2
+  Nonlinear variables:                  0
+  Integer variables:                    2
+
+  Total constraints:                    6
+  Nonlinear constraints:                0
+
+  Total nonzeros:                      10
+  Nonlinear nonzeros:                   0
+
+
+
+                                Variable           Value        Reduced Cost
+                                       X        7.000000           -8.000000
+                                       Y        3.000000           -7.000000
+
+                                     Row    Slack or Surplus      Dual Price
+                                       1        77.00000            1.000000
+                                       2        145.0000            0.000000
+                                       3        1.000000            0.000000
+                                       4        9.000000            0.000000
+                                       5        7.000000            0.000000
+                                       6        3.000000            0.000000
+

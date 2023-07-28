@@ -1,0 +1,157 @@
+#Göktuğ Ekinci 2380343
+
+.pos 0
+irmovq Stack,%rsp
+irmovq root,%rdi
+irmovq array,%rsi
+irmovq 8, %rdx
+call collect_into
+halt
+
+
+collect_into:
+    irmovq 0,%r8 #register for 0
+    irmovq 0,%rax 
+    irmovq 8,%rcx # register for 8 which is the number of byte of long
+    irmovq 1,%r12 #register for 1
+    
+    mrmovq (%rdi),%r9
+    
+    andq %rdi,%rdi
+    je arrayfilled
+    subq %rdx,%r8
+    jg arrayfilled
+    
+
+    pushq %rdi #recursionfor left child
+    pushq %rax
+    irmovq 0, %r10
+    mrmovq 8(%rdi),%rdi
+    andq %rdi,%rdi
+    je leftisempty
+    call collect_into
+    
+    rrmovq %rax,%r10
+
+leftisempty:  
+    popq %rax
+    popq %rdi
+
+    
+    rrmovq %r10,%r11 #copy the rax
+    subq %rdx,%r11
+    je arrayfilled
+
+    mrmovq (%rdi),%r14
+    rmmovq %r14,(%rsi) #put the tree element to the array
+    
+    addq %rcx,%rsi #increase array index
+    addq %r12,%rax
+    addq %r10,%rax
+    
+
+    pushq %rdi #right child
+    pushq %rax
+    irmovq 0,%r13
+    mrmovq 16(%rdi),%rdi
+    andq %rdi,%rdi
+    je rightisempty
+    call collect_into
+    
+    rrmovq %rax,%r13
+rightisempty:
+
+    popq %rax
+    popq %rdi
+    
+    addq %r13,%rax
+    
+    
+
+arrayfilled:
+    ret
+    
+
+
+
+
+
+# A sample eleven-element BST. Absolutely positioned
+# to avoid confusion when debugging.
+.pos 0x200
+root:
+    .quad 17
+    .quad node6
+    .quad node24
+node6:
+    .quad 6
+    .quad node4
+    .quad node11
+node4:
+    .quad 4
+    .quad node3
+    .quad node5
+node3:
+    .quad 3
+    .quad 0
+    .quad 0
+node5:
+    .quad 5
+    .quad 0 # Remember that 0 is null.
+    .quad 0
+node11:
+    .quad 11
+    .quad node8
+    .quad 0
+node8:
+    .quad 8
+    .quad 0
+    .quad 0
+node24:
+    .quad 24
+    .quad node19
+    .quad node40
+node19:
+    .quad 19
+    .quad 0
+    .quad 0
+node40:
+    .quad 40
+    .quad 0
+    .quad node52
+node52:
+    .quad 52
+    .quad 0
+    .quad 0
+    
+# An array with size of 8 to put elements in:
+# Make sure your code works correctly. Do not
+# fill beyond the bounds of the array. You should
+# see values in sorted order starting from the minimum
+# of the BST, since the traversal is in-order.
+.pos 0x600
+array:
+    .quad 0
+    .quad 0
+    .quad 0
+    .quad 0
+    .quad 0
+    .quad 0
+    .quad 0
+    .quad 0
+    
+
+
+.pos 0x1f00
+Stack:
+
+
+
+
+
+
+
+
+
+
+

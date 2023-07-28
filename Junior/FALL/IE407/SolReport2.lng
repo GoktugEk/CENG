@@ -1,0 +1,46 @@
+  Global optimal solution found.
+  Objective value:                              49000.00
+  Infeasibilities:                              0.000000
+  Total solver iterations:                             7
+  Elapsed runtime seconds:                          0.08
+
+  Model Class:                                        LP
+
+  Total variables:                     13
+  Nonlinear variables:                  0
+  Integer variables:                    0
+
+  Total constraints:                    9
+  Nonlinear constraints:                0
+
+  Total nonzeros:                      37
+  Nonlinear nonzeros:                   0
+
+
+
+                                Variable           Value        Reduced Cost
+                                     X11        0.000000            0.000000
+                                     X12        2500.000            0.000000
+                                     X13        0.000000            1.000000
+                                     X14        0.000000            0.000000
+                                     X21        0.000000            5.000000
+                                     X22        0.000000            1.000000
+                                     X23        2500.000            0.000000
+                                     X24        1500.000            0.000000
+                                     X31        2000.000            0.000000
+                                     X32        1500.000            0.000000
+                                     X33        0.000000            3.000000
+                                     X34        0.000000            0.000000
+                                     XIJ        0.000000            0.000000
+
+                                     Row    Slack or Surplus      Dual Price
+                                       1        49000.00           -1.000000
+                                       2        0.000000            1.000000
+                                       3        0.000000            0.000000
+                                       4        0.000000            2.000000
+                                       5        0.000000           -5.000000
+                                       6        0.000000           -8.000000
+                                       7        0.000000           -3.000000
+                                       8        0.000000           -6.000000
+                                       9        0.000000            0.000000
+

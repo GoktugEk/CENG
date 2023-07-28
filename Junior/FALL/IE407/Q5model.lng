@@ -1,0 +1,10 @@
+max 8x + 7y
+st
+-18x + 38y <= 133
+13x + 11y <= 125
+10x - 8y <= 55
+x > 0 
+y > 0 
+end
+gin x
+gin y

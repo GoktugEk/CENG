@@ -1,0 +1,299 @@
+                            | #/* $begin absrev-ys */
+                            | ##################################################################
+                            | # absrev.ys - Reverse a src block of len words to dst.
+                            | # Return the sum of absolute values of words contained in src.
+                            | #
+                            | # Göktuğ Ekinci 2380343
+                            | # Describe how and why you modified the baseline code.
+                            | ##################################################################
+                            | # Do not modify this portion
+                            | # Function prologue.
+                            | # %rdi = src, %rsi = dst, %rdx = len
+                            | 
+                            | 
+                            | # Hi, I will tell you what I did in this file to speed up the process here.
+                            | # First, I added leaq instruction to the hcl file so that I can use in this file 
+                            | # when I need to increase something. I did not change leaq, it is ordinary leaq instruction.
+                            | # I fixed the before loop part by adding rcx to itself 3 times instead of adding rdx 8 times
+                            | # and I used leaq to decrease it. This speeded up my code really good.
+                            | #
+                            | # Adding leaqs to the code and fixing the first part already speeds the code significantly
+                            | # up. However, it was not enough. I needed to fix the loop itself too. I decided to use 
+                            | # loop unrolling. This way, even the code looks horrible, it would run faster. Since 
+                            | # I had 9 spare registers left from the other works, I decided to use 9 of them in the 
+                            | # first unroll. This way I would do the 9 job in one cycle and did not need to check loop
+                            | # conditions again and again. Then I decided to use 5 because if I used 4, this means
+                            | # loop 4 might need to run twice, but I don't want that so that I don't need to do a check
+                            | # at each loops end(except first one because first can run more than once).
+                            | #
+                            | # I also changed the negation calculation, I changed its calculation by using cmovg, and 
+                            | # not moving our value to a temp value. Instead, I make the temp value 0, subtract my value
+                            | # from the temp value and I have negation. I'll use the larger one. Long story short, instead
+                            | # of checking and doing, I do and then check.
+                            | #
+                            | #
+                            | #I didn't do the las decresing calculations to save more time and these all changes speeded up my
+                            | # code to a number of 9.31.
+                            | #
+                            | 
+                            | 
+                            | 
+                            | 
+                            | 
+                            | 
+                            | 
+0x000:                      | absrev:
+                            | ##################################################################
+                            | # You can modify this portion
+                            |     # Loop header
+0x000: 6300                 |     xorq %rax,%rax    	# sum = 0;
+                            |     
+                            |     # all this for dst_rev = dst + len - 1
+                            |     
+0x002: d012ffffffffffffffff |     leaq -1(%rdx), %rcx     # add len eight times
+0x00c: 6011                 |     addq %rcx, %rcx
+0x00e: 6011                 |     addq %rcx, %rcx     #instead of adding 8 times I added it to itsef 3 times
+0x010: 6011                 |     addq %rcx, %rcx
+0x012: 6061                 |     addq %rsi, %rcx     # add dst
+                            |     
+                            |  
+                            | 
+                            |     
+0x014:                      | nine:    
+0x014: e0f20900000000000000 |     icmpq $9,%rdx
+0x01e: 724a01000000000000   |     jl five
+0x027: 50870000000000000000 |     mrmovq (%rdi), %r8 # read val from src...
+0x031: 50970800000000000000 |     mrmovq 8(%rdi), %r9 # read val from src...
+0x03b: 50a71000000000000000 |     mrmovq 16(%rdi), %r10 # read val from src...
+0x045: 50b71800000000000000 |     mrmovq 24(%rdi), %r11 # read val from src...
+0x04f: 50c72000000000000000 |     mrmovq 32(%rdi), %r12 # read val from src...
+0x059: 50d72800000000000000 |     mrmovq 40(%rdi), %r13 # read val from src...
+0x063: 50e73000000000000000 |     mrmovq 48(%rdi), %r14 # read val from src...
+0x06d: 50573800000000000000 |     mrmovq 56(%rdi), %rbp # read val from src...
+0x077: 50674000000000000000 |     mrmovq 64(%rdi), %rsi 
+                            |     
+                            |     
+                            |     
+                            |     
+                            |     
+                            |     
+0x081: 40810000000000000000 |     rmmovq %r8, (%rcx) # ...and store it to dst
+0x08b: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x08d: 6183                 |     subq %r8, %rbx      # negation achieved!
+0x08f: 2638                 |     cmovg %rbx, %r8
+                            |     
+0x091: 4091f8ffffffffffffff |     rmmovq %r9, -8(%rcx) # ...and store it to dst
+0x09b: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x09d: 6193                 |     subq %r9, %rbx      # negation achieved!
+0x09f: 2639                 |     cmovg %rbx, %r9
+                            |     
+0x0a1: 40a1f0ffffffffffffff |     rmmovq %r10, -16(%rcx) # ...and store it to dst
+0x0ab: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x0ad: 61a3                 |     subq %r10, %rbx      # negation achieved!
+0x0af: 263a                 |     cmovg %rbx, %r10
+                            |     
+0x0b1: 40b1e8ffffffffffffff |     rmmovq %r11, -24(%rcx) # ...and store it to dst
+0x0bb: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x0bd: 61b3                 |     subq %r11, %rbx      # negation achieved!
+0x0bf: 263b                 |     cmovg %rbx, %r11
+                            |     
+0x0c1: 40c1e0ffffffffffffff |     rmmovq %r12, -32(%rcx) # ...and store it to dst
+0x0cb: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x0cd: 61c3                 |     subq %r12, %rbx      # negation achieved!
+0x0cf: 263c                 |     cmovg %rbx, %r12
+                            | 
+0x0d1: 40d1d8ffffffffffffff |     rmmovq %r13, -40(%rcx) # ...and store it to dst
+0x0db: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x0dd: 61d3                 |     subq %r13, %rbx      # negation achieved!
+0x0df: 263d                 |     cmovg %rbx, %r13
+                            |  
+0x0e1: 40e1d0ffffffffffffff |     rmmovq %r14, -48(%rcx) # ...and store it to dst
+0x0eb: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x0ed: 61e3                 |     subq %r14, %rbx      # negation achieved!
+0x0ef: 263e                 |     cmovg %rbx, %r14
+                            |          
+0x0f1: 4051c8ffffffffffffff |     rmmovq %rbp, -56(%rcx) # ...and store it to dst
+0x0fb: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x0fd: 6153                 |     subq %rbp, %rbx      # negation achieved!
+0x0ff: 2635                 |     cmovg %rbx, %rbp
+                            |     
+0x101: 4061c0ffffffffffffff |     rmmovq %rsi, -64(%rcx) # ...and store it to dst
+0x10b: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x10d: 6163                 |     subq %rsi, %rbx      # negation achieved!
+0x10f: 2636                 |     cmovg %rbx, %rsi
+                            |     
+0x111: 605e                 |     addq %rbp, %r14
+0x113: 6089                 |     addq %r8,%r9
+0x115: 60ab                 |     addq %r10,%r11
+0x117: 60cd                 |     addq %r12,%r13
+0x119: 609e                 |     addq %r9,%r14
+0x11b: 60bd                 |     addq %r11,%r13
+0x11d: 60de                 |     addq %r13,%r14
+0x11f: 60e0                 |     addq %r14, %rax
+0x121: 6060                 |     addq %rsi,%rax
+                            |     
+                            | 
+                            | 
+0x123: d011b8ffffffffffffff |     leaq -72(%rcx),%rcx  # dst_rev--
+0x12d: d0774800000000000000 |     leaq 72(%rdi), %rdi    	# src++
+0x137: d022f7ffffffffffffff |     leaq -9(%rdx), %rdx    	# len-- USED LEAQ AND MAKE IT FASTER FROM 16.93 TO 14.93
+                            |     
+                            | 
+0x141: 701400000000000000   |     jmp nine             # if so, goto Loop:
+                            |     
+                            |     
+                            |     
+                            |     
+0x14a:                      | five:
+0x14a: e0f20500000000000000 |     icmpq $5,%rdx
+0x154: 721102000000000000   |     jl three
+0x15d: 50870000000000000000 |     mrmovq (%rdi), %r8 # read val from src...
+0x167: 50970800000000000000 |     mrmovq 8(%rdi), %r9 # read val from src...
+0x171: 50a71000000000000000 |     mrmovq 16(%rdi), %r10 # read val from src...
+0x17b: 50b71800000000000000 |     mrmovq 24(%rdi), %r11 # read val from src...    
+0x185: 50c72000000000000000 |     mrmovq 32(%rdi), %r12 # read val from src...
+                            |     
+0x18f: 40810000000000000000 |     rmmovq %r8, (%rcx) # ...and store it to dst
+0x199: 4091f8ffffffffffffff |     rmmovq %r9, -8(%rcx) # ...and store it to dst
+0x1a3: 40a1f0ffffffffffffff |     rmmovq %r10, -16(%rcx) # ...and store it to dst
+0x1ad: 40b1e8ffffffffffffff |     rmmovq %r11, -24(%rcx) # ...and store it to dst
+0x1b7: 40c1e0ffffffffffffff |     rmmovq %r12, -32(%rcx) # ...and store it to dst
+                            |     
+0x1c1: 2083                 |     rrmovq %r8, %rbx    # temporary move
+0x1c3: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x1c5: 6183                 |     subq %r8, %rbx      # negation achieved!
+0x1c7: 2638                 |     cmovg %rbx, %r8
+                            |     
+0x1c9: 2093                 |     rrmovq %r9, %rbx    # temporary move
+0x1cb: 6333                 |     xorq %rbx, %rbx
+0x1cd: 6193                 |     subq %r9, %rbx      # negation achieved!
+0x1cf: 2639                 |     cmovg %rbx, %r9
+                            | 
+0x1d1: 20a3                 |     rrmovq %r10, %rbx    # temporary move
+0x1d3: 6333                 |     xorq %rbx, %rbx
+0x1d5: 61a3                 |     subq %r10, %rbx      # negation achieved!
+0x1d7: 263a                 |     cmovg %rbx, %r10
+                            | 
+0x1d9: 20b3                 |     rrmovq %r11, %rbx    # temporary move
+0x1db: 6333                 |     xorq %rbx, %rbx
+0x1dd: 61b3                 |     subq %r11, %rbx      # negation achieved!
+0x1df: 263b                 |     cmovg %rbx, %r11
+                            | 
+0x1e1: 20c3                 |     rrmovq %r12, %rbx    # temporary move
+0x1e3: 6333                 |     xorq %rbx, %rbx
+0x1e5: 61c3                 |     subq %r12, %rbx      # negation achieved!
+0x1e7: 263c                 |     cmovg %rbx, %r12
+                            | 
+0x1e9: 60c0                 |     addq %r12, %rax
+0x1eb: 60b0                 |     addq %r11, %rax     # sum += absval
+0x1ed: 60a0                 |     addq %r10, %rax     # sum += absval
+0x1ef: 6090                 |     addq %r9, %rax     # sum += absval
+0x1f1: 6080                 |     addq %r8, %rax     # sum += absval
+                            |     
+0x1f3: d022fbffffffffffffff |     leaq -5(%rdx), %rdx    	# len-- USED LEAQ AND MAKE IT FASTER FROM 16.93 TO 14.93
+0x1fd: d0772800000000000000 |     leaq 40(%rdi), %rdi    	# src++
+0x207: d011d8ffffffffffffff |     leaq -40(%rcx),%rcx  # dst_rev--
+                            | 
+                            | 
+                            |     
+                            |     
+0x211:                      | three:
+0x211: e0f20300000000000000 |     icmpq $3,%rdx
+0x21b: 729c02000000000000   |     jl two
+                            | 
+0x224: 50870000000000000000 |     mrmovq (%rdi), %r8 # read val from src...
+0x22e: 50970800000000000000 |     mrmovq 8(%rdi), %r9 # read val from src...
+0x238: 50a71000000000000000 |     mrmovq 16(%rdi), %r10 # read val from src...
+                            |     
+0x242: 40810000000000000000 |     rmmovq %r8, (%rcx) # ...and store it to dst
+0x24c: 4091f8ffffffffffffff |     rmmovq %r9, -8(%rcx) # ...and store it to dst
+0x256: 40a1f0ffffffffffffff |     rmmovq %r10, -16(%rcx) # ...and store it to dst
+                            |     
+                            |     
+0x260: 2083                 |     rrmovq %r8, %rbx    # temporary move
+0x262: 6333                 |     xorq %rbx, %rbx     # zero r10
+0x264: 6183                 |     subq %r8, %rbx      # negation achieved!
+0x266: 2638                 |     cmovg %rbx, %r8
+                            |     
+0x268: 2093                 |     rrmovq %r9, %rbx    # temporary move
+0x26a: 6333                 |     xorq %rbx, %rbx
+0x26c: 6193                 |     subq %r9, %rbx      # negation achieved!
+0x26e: 2639                 |     cmovg %rbx, %r9
+                            | 
+0x270: 20a3                 |     rrmovq %r10, %rbx    # temporary move
+0x272: 6333                 |     xorq %rbx, %rbx
+0x274: 61a3                 |     subq %r10, %rbx      # negation achieved!
+0x276: 263a                 |     cmovg %rbx, %r10
+                            | 
+0x278: 60a0                 |     addq %r10, %rax     # sum += absval
+0x27a: 6090                 |     addq %r9, %rax     # sum += absval
+0x27c: 6080                 |     addq %r8, %rax     # sum += absval
+                            |     
+0x27e: d022fdffffffffffffff |     leaq -3(%rdx), %rdx    	# len-- USED LEAQ AND MAKE IT FASTER FROM 16.93 TO 14.93
+0x288: d0771800000000000000 |     leaq 24(%rdi), %rdi    	# src++
+0x292: d011e8ffffffffffffff |     leaq -24(%rcx),%rcx  # dst_rev--
+                            |     
+                            | 
+                            |     
+0x29c:                      | two:
+0x29c: e0f20200000000000000 |     icmpq 2,%rdx
+0x2a6: 721903000000000000   |     jl ordinary
+                            |     
+0x2af: 50870000000000000000 |     mrmovq (%rdi), %r8 # read val from src...
+0x2b9: 50970800000000000000 |     mrmovq 8(%rdi), %r9 # read val from src...
+                            |     
+0x2c3: 40810000000000000000 |     rmmovq %r8, (%rcx) # ...and store it to dst
+0x2cd: 4091f8ffffffffffffff |     rmmovq %r9, -8(%rcx) # ...and store it to dst
+                            |     
+0x2d7: 2083                 |     rrmovq %r8, %rbx    # temporary move
+0x2d9: 30f30000000000000000 |     irmovq $0, %rbx     # zero r10
+0x2e3: 6183                 |     subq %r8, %rbx      # negation achieved!
+0x2e5: 2638                 |     cmovg %rbx, %r8
+                            |     
+0x2e7: 2093                 |     rrmovq %r9, %rbx    # temporary move
+0x2e9: 30f30000000000000000 |     irmovq $0, %rbx     # zero r10
+0x2f3: 6193                 |     subq %r9, %rbx      # negation achieved!
+0x2f5: 2639                 |     cmovg %rbx, %r9
+                            | 
+0x2f7: 6090                 |     addq %r9, %rax     # sum += absval
+0x2f9: 6080                 |     addq %r8, %rax     # sum += absval
+                            |     
+0x2fb: d022feffffffffffffff |     leaq -2(%rdx), %rdx    	# len-- USED LEAQ AND MAKE IT FASTER FROM 16.93 TO 14.93
+0x305: d0771000000000000000 |     leaq 16(%rdi), %rdi    	# src++
+0x30f: d011f0ffffffffffffff |     leaq -16(%rcx),%rcx  # dst_rev--
+                            | 
+                            |  
+                            |     
+                            | 
+0x319:                      | ordinary:
+0x319: e0f20100000000000000 |     icmpq 1,%rdx
+0x323: 725203000000000000   |     jl Done
+0x32c: 50870000000000000000 |     mrmovq (%rdi), %r8 # read val from src...
+0x336: 40810000000000000000 |     rmmovq %r8, (%rcx) # ...and store it to dst
+                            |     
+                            |     
+0x340: 2083                 |     rrmovq %r8, %rbx    # temporary move
+0x342: 30f30000000000000000 |     irmovq $0, %rbx     # zero r10
+0x34c: 6183                 |     subq %r8, %rbx      # negation achieved!
+0x34e: 2638                 |     cmovg %rbx, %r8
+0x350: 6080                 |     addq %r8, %rax     # sum += absval
+                            |     
+                            | 
+                            | ##################################################################
+                            | # Do not modify the following section of code
+                            | # Function epilogue.
+0x352:                      | Done:
+0x352: 90                   |     ret
+                            | ##################################################################
+                            | # Keep the following label at the end of your function
+0x353:                      | End:
+                            | #/* $end absrev-ys */
+                            | 
+                            | 
+                            | 
+                            | 
+                            | 
+                            | 
+                            | 
+                            | 
+                            | 

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="cmake_testapp"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cmake_testapp">
+				<Option output="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/cmake-build-debug/cmake_testapp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 cmake_testapp"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cmake_testapp/fast">
+				<Option output="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/cmake-build-debug/cmake_testapp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 cmake_testapp/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE\ 4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/main.cpp">
+			<Option target="cmake_testapp"/>
+		</Unit>
+		<Unit filename="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/the4.cpp">
+			<Option target="cmake_testapp"/>
+		</Unit>
+		<Unit filename="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/the4.h">
+			<Option target="cmake_testapp"/>
+		</Unit>
+		<Unit filename="/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

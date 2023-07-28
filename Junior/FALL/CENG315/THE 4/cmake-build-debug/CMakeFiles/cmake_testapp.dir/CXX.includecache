@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/the4.cpp
+the4.h
+/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/the4.h
+
+/Users/goktugekinci/Desktop/Junior/FALL/CENG315/THE 4/the4.h
+

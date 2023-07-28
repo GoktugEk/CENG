@@ -1,0 +1,368 @@
+#######################################################################
+# Test for copying block of size 4;
+#######################################################################
+	.pos 0
+main:	irmovq Stack, %rsp  	# Set up stack pointer
+
+	# Set up arguments for copy function and then invoke it
+	irmovq $4, %rdx		# src and dst have 4 elements
+	irmovq dest, %rsi	# dst array
+	irmovq src, %rdi	# src array
+    # corrupt all the unused registers to prevent assumptions
+    irmovq $0x5710331, %rax
+    irmovq $0x5710331, %rbx
+    irmovq $0x5710331, %rcx
+    irmovq $0x5710331, %rbp
+    irmovq $0x5710331, %r8
+    irmovq $0x5710331, %r9
+    irmovq $0x5710331, %r10
+    irmovq $0x5710331, %r11
+    irmovq $0x5710331, %r12
+    irmovq $0x5710331, %r13
+    irmovq $0x5710331, %r14
+	call absrev		 
+	halt			# should halt with abs sum in %rax
+StartFun:
+#/* $begin absrev-ys */
+##################################################################
+# absrev.ys - Reverse a src block of len words to dst.
+# Return the sum of absolute values of words contained in src.
+#
+# Göktuğ Ekinci 2380343
+# Describe how and why you modified the baseline code.
+##################################################################
+# Do not modify this portion
+# Function prologue.
+# %rdi = src, %rsi = dst, %rdx = len
+
+
+# Hi, I will tell you what I did in this file to speed up the process here.
+# First, I added leaq instruction to the hcl file so that I can use in this file 
+# when I need to increase something. I did not change leaq, it is ordinary leaq instruction.
+# I fixed the before loop part by adding rcx to itself 3 times instead of adding rdx 8 times
+# and I used leaq to decrease it. This speeded up my code really good.
+#
+# Adding leaqs to the code and fixing the first part already speeds the code significantly
+# up. However, it was not enough. I needed to fix the loop itself too. I decided to use 
+# loop unrolling. This way, even the code looks horrible, it would run faster. Since 
+# I had 9 spare registers left from the other works, I decided to use 9 of them in the 
+# first unroll. This way I would do the 9 job in one cycle and did not need to check loop
+# conditions again and again. Then I decided to use 5 because if I used 4, this means
+# loop 4 might need to run twice, but I don't want that so that I don't need to do a check
+# at each loops end(except first one because first can run more than once).
+#
+# I also changed the negation calculation, I changed its calculation by using cmovg, and 
+# not moving our value to a temp value. Instead, I make the temp value 0, subtract my value
+# from the temp value and I have negation. I'll use the larger one. Long story short, instead
+# of checking and doing, I do and then check.
+#
+#
+#I didn't do the las decresing calculations to save more time and these all changes speeded up my
+# code to a number of 9.31.
+#
+
+
+
+
+
+
+
+absrev:
+##################################################################
+# You can modify this portion
+    # Loop header
+    xorq %rax,%rax    	# sum = 0;
+    
+    # all this for dst_rev = dst + len - 1
+    
+    leaq -1(%rdx), %rcx     # add len eight times
+    addq %rcx, %rcx
+    addq %rcx, %rcx     #instead of adding 8 times I added it to itsef 3 times
+    addq %rcx, %rcx
+    addq %rsi, %rcx     # add dst
+    
+ 
+
+    
+nine:    
+    icmpq $9,%rdx
+    jl five
+    mrmovq (%rdi), %r8 # read val from src...
+    mrmovq 8(%rdi), %r9 # read val from src...
+    mrmovq 16(%rdi), %r10 # read val from src...
+    mrmovq 24(%rdi), %r11 # read val from src...
+    mrmovq 32(%rdi), %r12 # read val from src...
+    mrmovq 40(%rdi), %r13 # read val from src...
+    mrmovq 48(%rdi), %r14 # read val from src...
+    mrmovq 56(%rdi), %rbp # read val from src...
+    mrmovq 64(%rdi), %rsi 
+    
+    
+    
+    
+    
+    
+    rmmovq %r8, (%rcx) # ...and store it to dst
+    xorq %rbx, %rbx     # zero r10
+    subq %r8, %rbx      # negation achieved!
+    cmovg %rbx, %r8
+    
+    rmmovq %r9, -8(%rcx) # ...and store it to dst
+    xorq %rbx, %rbx     # zero r10
+    subq %r9, %rbx      # negation achieved!
+    cmovg %rbx, %r9
+    
+    rmmovq %r10, -16(%rcx) # ...and store it to dst
+    xorq %rbx, %rbx     # zero r10
+    subq %r10, %rbx      # negation achieved!
+    cmovg %rbx, %r10
+    
+    rmmovq %r11, -24(%rcx) # ...and store it to dst
+    xorq %rbx, %rbx     # zero r10
+    subq %r11, %rbx      # negation achieved!
+    cmovg %rbx, %r11
+    
+    rmmovq %r12, -32(%rcx) # ...and store it to dst
+    xorq %rbx, %rbx     # zero r10
+    subq %r12, %rbx      # negation achieved!
+    cmovg %rbx, %r12
+
+    rmmovq %r13, -40(%rcx) # ...and store it to dst
+    xorq %rbx, %rbx     # zero r10
+    subq %r13, %rbx      # negation achieved!
+    cmovg %rbx, %r13
+ 
+    rmmovq %r14, -48(%rcx) # ...and store it to dst
+    xorq %rbx, %rbx     # zero r10
+    subq %r14, %rbx      # negation achieved!
+    cmovg %rbx, %r14
+         
+    rmmovq %rbp, -56(%rcx) # ...and store it to dst
+    xorq %rbx, %rbx     # zero r10
+    subq %rbp, %rbx      # negation achieved!
+    cmovg %rbx, %rbp
+    
+    rmmovq %rsi, -64(%rcx) # ...and store it to dst
+    xorq %rbx, %rbx     # zero r10
+    subq %rsi, %rbx      # negation achieved!
+    cmovg %rbx, %rsi
+    
+    addq %rbp, %r14
+    addq %r8,%r9
+    addq %r10,%r11
+    addq %r12,%r13
+    addq %r9,%r14
+    addq %r11,%r13
+    addq %r13,%r14
+    addq %r14, %rax
+    addq %rsi,%rax
+    
+
+
+    leaq -72(%rcx),%rcx  # dst_rev--
+    leaq 72(%rdi), %rdi    	# src++
+    leaq -9(%rdx), %rdx    	# len-- USED LEAQ AND MAKE IT FASTER FROM 16.93 TO 14.93
+    
+
+    jmp nine             # if so, goto Loop:
+    
+    
+    
+    
+five:
+    icmpq $5,%rdx
+    jl three
+    mrmovq (%rdi), %r8 # read val from src...
+    mrmovq 8(%rdi), %r9 # read val from src...
+    mrmovq 16(%rdi), %r10 # read val from src...
+    mrmovq 24(%rdi), %r11 # read val from src...    
+    mrmovq 32(%rdi), %r12 # read val from src...
+    
+    rmmovq %r8, (%rcx) # ...and store it to dst
+    rmmovq %r9, -8(%rcx) # ...and store it to dst
+    rmmovq %r10, -16(%rcx) # ...and store it to dst
+    rmmovq %r11, -24(%rcx) # ...and store it to dst
+    rmmovq %r12, -32(%rcx) # ...and store it to dst
+    
+    rrmovq %r8, %rbx    # temporary move
+    xorq %rbx, %rbx     # zero r10
+    subq %r8, %rbx      # negation achieved!
+    cmovg %rbx, %r8
+    
+    rrmovq %r9, %rbx    # temporary move
+    xorq %rbx, %rbx
+    subq %r9, %rbx      # negation achieved!
+    cmovg %rbx, %r9
+
+    rrmovq %r10, %rbx    # temporary move
+    xorq %rbx, %rbx
+    subq %r10, %rbx      # negation achieved!
+    cmovg %rbx, %r10
+
+    rrmovq %r11, %rbx    # temporary move
+    xorq %rbx, %rbx
+    subq %r11, %rbx      # negation achieved!
+    cmovg %rbx, %r11
+
+    rrmovq %r12, %rbx    # temporary move
+    xorq %rbx, %rbx
+    subq %r12, %rbx      # negation achieved!
+    cmovg %rbx, %r12
+
+    addq %r12, %rax
+    addq %r11, %rax     # sum += absval
+    addq %r10, %rax     # sum += absval
+    addq %r9, %rax     # sum += absval
+    addq %r8, %rax     # sum += absval
+    
+    leaq -5(%rdx), %rdx    	# len-- USED LEAQ AND MAKE IT FASTER FROM 16.93 TO 14.93
+    leaq 40(%rdi), %rdi    	# src++
+    leaq -40(%rcx),%rcx  # dst_rev--
+
+
+    
+    
+three:
+    icmpq $3,%rdx
+    jl two
+
+    mrmovq (%rdi), %r8 # read val from src...
+    mrmovq 8(%rdi), %r9 # read val from src...
+    mrmovq 16(%rdi), %r10 # read val from src...
+    
+    rmmovq %r8, (%rcx) # ...and store it to dst
+    rmmovq %r9, -8(%rcx) # ...and store it to dst
+    rmmovq %r10, -16(%rcx) # ...and store it to dst
+    
+    
+    rrmovq %r8, %rbx    # temporary move
+    xorq %rbx, %rbx     # zero r10
+    subq %r8, %rbx      # negation achieved!
+    cmovg %rbx, %r8
+    
+    rrmovq %r9, %rbx    # temporary move
+    xorq %rbx, %rbx
+    subq %r9, %rbx      # negation achieved!
+    cmovg %rbx, %r9
+
+    rrmovq %r10, %rbx    # temporary move
+    xorq %rbx, %rbx
+    subq %r10, %rbx      # negation achieved!
+    cmovg %rbx, %r10
+
+    addq %r10, %rax     # sum += absval
+    addq %r9, %rax     # sum += absval
+    addq %r8, %rax     # sum += absval
+    
+    leaq -3(%rdx), %rdx    	# len-- USED LEAQ AND MAKE IT FASTER FROM 16.93 TO 14.93
+    leaq 24(%rdi), %rdi    	# src++
+    leaq -24(%rcx),%rcx  # dst_rev--
+    
+
+    
+two:
+    icmpq 2,%rdx
+    jl ordinary
+    
+    mrmovq (%rdi), %r8 # read val from src...
+    mrmovq 8(%rdi), %r9 # read val from src...
+    
+    rmmovq %r8, (%rcx) # ...and store it to dst
+    rmmovq %r9, -8(%rcx) # ...and store it to dst
+    
+    rrmovq %r8, %rbx    # temporary move
+    irmovq $0, %rbx     # zero r10
+    subq %r8, %rbx      # negation achieved!
+    cmovg %rbx, %r8
+    
+    rrmovq %r9, %rbx    # temporary move
+    irmovq $0, %rbx     # zero r10
+    subq %r9, %rbx      # negation achieved!
+    cmovg %rbx, %r9
+
+    addq %r9, %rax     # sum += absval
+    addq %r8, %rax     # sum += absval
+    
+    leaq -2(%rdx), %rdx    	# len-- USED LEAQ AND MAKE IT FASTER FROM 16.93 TO 14.93
+    leaq 16(%rdi), %rdi    	# src++
+    leaq -16(%rcx),%rcx  # dst_rev--
+
+ 
+    
+
+ordinary:
+    icmpq 1,%rdx
+    jl Done
+    mrmovq (%rdi), %r8 # read val from src...
+    rmmovq %r8, (%rcx) # ...and store it to dst
+    
+    
+    rrmovq %r8, %rbx    # temporary move
+    irmovq $0, %rbx     # zero r10
+    subq %r8, %rbx      # negation achieved!
+    cmovg %rbx, %r8
+    addq %r8, %rax     # sum += absval
+    
+
+##################################################################
+# Do not modify the following section of code
+# Function epilogue.
+Done:
+    ret
+##################################################################
+# Keep the following label at the end of your function
+End:
+#/* $end absrev-ys */
+
+
+
+
+
+
+
+
+
+EndFun:
+
+###############################
+# Source and destination blocks 
+###############################
+	.align 8
+src:
+	.quad 1
+	.quad -2
+	.quad 3
+	.quad -4
+	.quad 0xbcdefa # This shouldn't get moved
+
+	.align 16
+Predest:
+	.quad 0xbcdefa
+dest:
+	.quad 0xcdefab
+	.quad 0xcdefab
+	.quad 0xcdefab
+	.quad 0xcdefab
+Postdest:
+	.quad 0xdefabc
+
+.align 8
+# Run time stack
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+	.quad 0
+
+Stack:

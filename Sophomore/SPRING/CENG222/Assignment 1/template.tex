@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+\usepackage{indentfirst}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\section*{Student Information}
+
+Name : Göktuğ Ekinci\\
+
+ID : 2380343 \\
+
+
+\section*{Answer 1}
+\subsection*{a)}
+
+\textbf{Blue:} $2 \times \frac{4}{6} + 3 \times \frac{1}{6} + 4 \times \frac{1}{6} = \frac{15}{6} = 2.5$ \\
+
+
+\textbf{Yellow:} $1 \times \frac{1}{3} + 2 \times \frac{1}{3} + 3 \times \frac{1}{3} = \frac{6}{3} = 2$\\
+
+
+\textbf{Red:}$1 \times \frac{2}{8} + 2 \times \frac{2}{8} + 3 \times \frac{3}{8} + 5 \times \frac{1}{8} = \frac{20}{8} = 2.5$\\
+\subsection*{b)}
+These dice rolls are independent from each other. So we can add their expected values. I would choose the first combination below for the maximum value since its expected value is bigger.\\
+
+\textbf{2 red and 1 yellow:} $ 2.5 + 2.5 + 2 = 7$\\
+
+\textbf{2 yellow and 1 blue:} $ 2 + 2 + 2.5 = 6.5$
+\subsection*{c)}
+If blue dice is guaranteed to resulted with 4, I would choose the second combination above since the expected value of blue dice will turn into 4. Total expected value of second combination above would be higher.
+
+\subsection*{d)}
+We have to compute the probability of red dice gives three and divide it to the space of giving 3's. The probability of red dice gives 3 is: $\frac{3}{8}$. Space of giving 3's is: $\frac{3}{8} + \frac{2}{6} + \frac{1}{6} = \frac{7}{8}$.\\
+
+Answer is: $ \dfrac{\frac{3}{8}}{\frac{7}{8}} = \dfrac{3}{7}$
+\newpage
+\subsection*{e)}
+Probabilities are where the \textbf{yellow turns 1 and red turns 5} and \textbf{both turns 3}.
+
+$\dfrac{2}{6} \times \dfrac{1}{8} + \dfrac{2}{6} \times \dfrac{3}{8} = \mathbf{\dfrac{1}{6}}$
+
+\section*{Answer 2}
+\subsection*{a)}
+The asked situation is P(A=0,I = 2), which is the third row from the table. \textbf{0.17}
+\subsection*{b)}
+This situation is impossible. All possibilities are given in the table. We know there is no more possibilities since the values are summed to 1. Answer is \textbf{0}
+\subsection*{c)}
+All rows are dependent to each other, so we need to sum the possibilities of 2 outages in total, which are P(A=0,I = 2), P(A=1,I = 1) = 0.17 + 0.11 = \textbf{0.28}.
+\subsection*{d)}
+This is P(A=1, I = i) $\rightarrow$ 0.12 + 0.11 + 0.22 + 0.15 = \textbf{0.6}  
+\subsection*{e)}
+\noindent
+We need to repeat part c for every possible situations, from 0 to 4.\\
+
+\noindent
+0 = P(A=0, I=0) = 0.08\\
+1 = P(A=1, I=0) + P(A=0, I=1) = 0.25\\
+2 = P(A=0, I=2) + P(A=1, I=1) = 0.28\\
+3 = P(A=0, I=3) + P(A=1, I=2) = 0.24\\
+4 = P(A=1, I=3) = 0.15\\
+
+\noindent
+Sum of all values are 1, which proves the solution.
+
+\subsection*{f)}
+One outage for Istanbul possibility is 0.11 + 0.13 = 0.24. One outage for Ankara possibility is 0.6 from part d. If we assume that they are independent, P(A=1, I=1) would be equal to 0.144. It can be seen that the possibility of P(A=1, I=1) = 0.11 $\neq$ 0.144. This shows they are independent events.
+
+\end{document}
